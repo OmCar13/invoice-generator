@@ -6,24 +6,27 @@ import Table from './components/Table';
 import Dates from './components/Dates';
 import Header from'./components/header';
 import MainDetails from './components/MainDetails';
+import MainDetailsForm from './components/MainDetailsForm';
 import ClientDetails from './components/ClientDetails';
+import ClientDetailsForm from './components/ClientDetailsForm';
 import  TableForm  from './components/TableForm';
 import ReactToPrint from 'react-to-print';
+import NotessForm from './components/NotessForm';
 function App() {
   const [showInvoice, setShowInvoice] = useState(true);
-  const [name, SetName] = useState("");
-  const [address, SetAddress] = useState("");
-  const [email, SetEmail] = useState("");
-  const [phone, SetPhone] = useState("");
-  const [bankName, SetBankName] = useState("");
-  const [bankAccount, SetBankAccount] = useState("");
-  const [website, SetWebsite] = useState("");
-  const [clientName, SetClientName] = useState("");
-  const [clientAddress, SetClientAddress] = useState("");
-  const [invoiceNumber, SetInvoiceNumber] = useState("");
-  const [invoiceDate, SetInvoiceDate] = useState("");
-  const [dueDate, SetDueDate] = useState("");
-  const [notes, SetNotes] = useState("");
+  const [name, SetName] = useState("Akhila Anilkumar");
+  const [address, SetAddress] = useState("Ostwal, Nalasopara");
+  const [email, SetEmail] = useState("anilkumarakhil80@gmail.com");
+  const [phone, SetPhone] = useState("8010896671");
+  const [bankName, SetBankName] = useState("State Bank of India");
+  const [bankAccount, SetBankAccount] = useState("21423636743");
+  const [website, SetWebsite] = useState("www.akhila.com");
+  const [clientName, SetClientName] = useState("Atharva Sankhe");
+  const [clientAddress, SetClientAddress] = useState("Mumbai, Maharashtra");
+  const [invoiceNumber, SetInvoiceNumber] = useState("54");
+  const [invoiceDate, SetInvoiceDate] = useState("12/02/2003");
+  const [dueDate, SetDueDate] = useState("12/04/2003");
+  const [notes, SetNotes] = useState("hello, hiii");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price,setPrice] = useState("");
@@ -41,7 +44,8 @@ function App() {
       <main className="m-5 p-5 md: max-w-xl mb-5 md:max-auto lg:max-w-2xl xl:max-w-4xl xl:max-w-4xl xl:mx-auto bg-white rounded shadow">
         
         { showInvoice ?(
-
+// THe section below contains the second page i.e the invoice bill view where the bill generation 
+// and downloading is possible (Print / Download )
           <>
             <ReactToPrint trigger = {()=> <button className="bg-blue-500 text-white 
               font-bold py-2 px-8 rounded shadow 
@@ -71,158 +75,35 @@ function App() {
             </button>
           </>
       ): (<>
+
+
+{/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
+{/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
+{/* THE SECTION BELOW INVOLVES THE FORM VIEW WHICH IS THE FIRST PAGE THAT
+ GETS RENDERED INTO THE WEBSITE */}
+
+          {/* THE FOLLOWING ARE THE INPUTS THAT HAS TO BE TAKEN FROM THE USER */}
           {/* name, address, email, phone, bank name, bank account number,
           back account holder's name , website, client name, client address,
           invoice number, invoice date, due date, notes,  */}
             <div className='flex flex-col justify-center'>
-              <article className='md:grid grid-cols-2 gap-10'  >
-                <div className='flex flex-col' >
-                <label htmlFor='name'>Enter your Name</label>
-                <input type="text" 
-                  name = "text" 
-                  id = "name" 
-                  placeholder = "Enter your name"
-                  autoComplete='off'
-                  value = {name}
-                  onChange = {(e)=> SetName(e.target.value)}
-                />
-                </div>
-                <div className='flex flex-col'>
-                <label htmlFor='address'>Enter your Address</label>
-                <input type="text" 
-                  name = "address" 
-                  id = "address" 
-                  placeholder = "Enter your address"
-                  autoComplete='off'
-                  value = {address}
-                  onChange = {(e)=> SetAddress(e.target.value)}
-                />
-                </div>
-              </article>
+              <MainDetailsForm 
+              name = {name} SetName = {SetName}  
+              address= {address} SetAddress={SetAddress}
+              email={email} SetEmail = {SetEmail}
+              website = {website} SetWebsite={SetWebsite}
+              phone = {phone} SetPhone = {SetPhone}
+              bankAccount = {bankAccount} SetBankAccount = {SetBankAccount}
+              bankName = {bankName} SetBankName = {SetBankName}
+              />
               
-              <article className='md:grid grid-cols-3 gap-10'>
-                <div className='flex flex-col'>
-                <label htmlFor='email'>Enter your Email</label>
-                <input type="email" 
-                  name = "email" 
-                  id = "email" 
-                  placeholder = "Enter your email"
-                  autoComplete='off'
-                  value = {email}
-                  onChange = {(e)=> SetEmail(e.target.value)}
-                />
-                </div>
-                <div className='flex flex-col'>
-                <label htmlFor='website'>Enter your Website link</label>
-                <input type="url" 
-                  name = "website" 
-                  id = "website" 
-                  placeholder = "Enter your webiste link"
-                  autoComplete='off'
-                  value = {website}
-                  onChange = {(e)=> SetWebsite(e.target.value)}
-                />
-                </div>
-                <div className='flex flex-col'>
-                <label htmlFor='phone'>Enter your Phone Number</label>
-                <input type="number" 
-                  name = "phone" 
-                  id = "phone" 
-                  placeholder = "Enter your Phone Number"
-                  autoComplete='off'
-                  value = {phone}
-                  onChange = {(e)=> SetPhone(e.target.value)}
-                />
-                </div>
-              </article >
-              
-              <article className='md:grid grid-cols-2 gap-10'>
-                <div className='flex flex-col'>
-                <label htmlFor='bankaccount'>Enter your Bank Account Number</label>
-                <input type="text" 
-                  name = "bankaccount" 
-                  id = "bankaccount" 
-                  placeholder = "Enter your Bank Account Number"
-                  autoComplete='off'
-                  value = {bankAccount}
-                  onChange = {(e)=> SetBankAccount(e.target.value)}
-                />
-                </div>
-                <div className='flex flex-col'>
-                <label htmlFor='bankname'>Enter your Bank Account Name</label>
-                <input type="text" 
-                  name = "bankname" 
-                  id = "bankname" 
-                  placeholder = "Enter your Bank Name"
-                  autoComplete='off'
-                  value = {bankName}
-                  onChange = {(e)=> SetBankName(e.target.value)}
-                />
-                </div>
-              </article>
-              
-              < article className = "md:grid grid-cols-2 gap-10 md:mt-16">
-                <div className='flex flex-col'>
-                  <label htmlFor='clientname'>Enter your Client's Name</label>
-                  <input type="text" 
-                    name = "clientname" 
-                    id = "clientname" 
-                    placeholder = "Enter your Client's name"
-                    autoComplete='off'
-                    value = {clientName}
-                    onChange = {(e)=> SetClientName(e.target.value)}
-                  />
-                </div>
-
-                < div className='flex flex-col'>
-                  <label htmlFor='clientaddress'>Enter your Client's Address</label>
-                  <input type="text" 
-                    name = "clientaddress" 
-                    id = "clientaddress" 
-                    placeholder = "Enter your Client's Address"
-                    autoComplete='off'
-                    value = {clientAddress}
-                    onChange = {(e)=> SetClientAddress(e.target.value)}
-                />
-
-                </div>
-              </article>
-
-              <article className = "md:grid grid-cols-3 gap-10">
-                <div className='flex flex-col'>
-                  <label htmlFor='invoicenumber'>Enter your Invoice Number</label>
-                  <input type="number" 
-                    name = "invoicenumber" 
-                    id = "invoicenumber" 
-                    placeholder = "Enter your Invoice Number"
-                    autoComplete='off'
-                    value = {invoiceNumber}
-                    onChange = {(e)=> SetInvoiceNumber(e.target.value)}
-                  />
-                </div>
-                < div className='flex flex-col'>
-                  <label htmlFor='invoicedate'>Enter your Invoice Date</label>
-                  <input type="date" 
-                    name = "invoicedate" 
-                    id = "invoicedate" 
-                    placeholder = "Enter your Invoice Date"
-                    autoComplete='off'
-                    value = {invoiceDate}
-                    onChange = {(e)=> SetInvoiceDate(e.target.value)}
-                  />
-                </div>
-                <div className='flex flex-col'>
-                  <label htmlFor='duedate'>Enter your Due Date</label>
-                  <input type="date" 
-                    name = "duedate" 
-                    id = "duedate" 
-                    placeholder = "Enter your Due Date"
-                    autoComplete='off'
-                    value = {dueDate}
-                    onChange = {(e)=> SetDueDate(e.target.value)}
-                  />
-                </div>
-              </article>
+              <ClientDetailsForm 
+              clientName = {clientName} SetClientName = {SetClientName}
+              clientAddress = {clientAddress} SetClientAddress = {SetClientAddress}
+              invoiceNumber = {invoiceNumber} SetInvoiceNumber = {SetInvoiceNumber}
+              invoiceDate = {invoiceDate} SetInvoiceDate = {SetInvoiceDate}
+              dueDate = {dueDate} SetDueDate = {SetDueDate}
+              />
 
               <article >
                 <TableForm description = {description} setDescription = {setDescription} 
@@ -235,18 +116,9 @@ function App() {
               </article>
               
               
+              <NotessForm notes = {notes} SetNotes = {SetNotes} setShowInvoice = {setShowInvoice}/>
               
-              
-              
-              <label htmlFor='notes'>Enter your Notes</label>
-              <textarea name='notes' id='notes' cols = "30" rows = "10" placeholder='Additional Notes'
-              value={notes} onChange = {(e)=> SetNotes(e.target.value)}></textarea>
-            <button onClick = {()=>setShowInvoice(true) }className='mt-5 bg-blue-500 text-white 
-            font-bold py-2 px-8 rounded shadow 
-            border-2 border-blue-500 
-            hover:bg-transparent 
-            hover:text-blue-500 
-            transition-all duratiom-300' >Preview Invoice</button>
+            
             </div>
           </>
             
