@@ -26,7 +26,7 @@ function App() {
   const [invoiceNumber, SetInvoiceNumber] = useState("");
   const [invoiceDate, SetInvoiceDate] = useState("");
   const [dueDate, SetDueDate] = useState("");
-  const [notes, SetNotes] = useState("hello, hiii");
+  const [notes, SetNotes] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price,setPrice] = useState("");
